@@ -13,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "userapp")
 public class User implements Serializable {
@@ -33,7 +31,6 @@ public class User implements Serializable {
 				@JoinColumn(name = "user_id", referencedColumnName = "id") }, 
 					inverseJoinColumns = {
 				@JoinColumn(name = "role_id", referencedColumnName = "id") })
-	@JsonIgnoreProperties("users")
 	private List<Role> roles;
 	
 	

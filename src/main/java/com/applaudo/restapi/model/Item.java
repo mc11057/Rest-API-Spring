@@ -45,7 +45,7 @@ public class Item implements Serializable{
 	private String itemLastModifiedByUser;
 
 	@Enumerated(EnumType.STRING)
-	private ItemStatusEnum name;
+	private ItemStatusEnum status;
 
 	public int getItemId() {
 		return itemId;
@@ -111,13 +111,15 @@ public class Item implements Serializable{
 		this.itemLastModifiedByUser = itemLastModifiedByUser;
 	}
 
-	public ItemStatusEnum getName() {
-		return name;
+	public ItemStatusEnum getStatus() {
+		return status;
 	}
 
-	public void setName(ItemStatusEnum name) {
-		this.name = name;
+	public void setStatus(ItemStatusEnum status) {
+		this.status = status;
 	}
+
+
 	
 	
 
