@@ -7,7 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,8 @@ public class Item implements Serializable{
 	private static final long serialVersionUID = -6290668663481962143L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq_gen")
+	@SequenceGenerator(name = "item_seq_gen", sequenceName = "item_id_seq", allocationSize = 1)
     @Column(name = "itemId", unique = true, nullable = false)
 	private int itemId;
 	

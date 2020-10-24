@@ -1,5 +1,13 @@
 package com.applaudo.restapi.security;
 
+import static com.applaudo.restapi.security.SecurityConstants.APP_ITEM;
+import static com.applaudo.restapi.security.SecurityConstants.H2_DB_CONSOLE;
+import static com.applaudo.restapi.security.SecurityConstants.SIGN_UP_URL;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,16 +18,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import com.applaudo.restapi.service.impl.UserDetailsServiceImpl;
-import org.springframework.context.annotation.Bean;
-
-import static com.applaudo.restapi.security.SecurityConstants.SIGN_UP_URL;
-import static com.applaudo.restapi.security.SecurityConstants.MOVIES;
-import static com.applaudo.restapi.security.SecurityConstants.MOVIES_DETAIL;
-import static com.applaudo.restapi.security.SecurityConstants.MOVIE_GET;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -33,12 +33,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-				.antMatchers(HttpMethod.GET, MOVIES).permitAll().antMatchers(HttpMethod.GET, MOVIES_DETAIL).permitAll()
-				.antMatchers(HttpMethod.GET, MOVIE_GET).permitAll().anyRequest().authenticated().and()
+		http.cors().and().csrf().disable().authorizeRequests()
+				.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+				.antMatchers(HttpMethod.GET, APP_ITEM).permitAll()
+			    .antMatchers(H2_DB_CONSOLE).permitAll().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailsService)).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override
