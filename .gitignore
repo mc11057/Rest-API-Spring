@@ -1,0 +1,24 @@
+HELP.md
+
+*.class
+### MAVEN ###
+target/
+!.mvn/wrapper/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.cmd
+mvnw
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# Package Files #
+*.jar
+*.war
+*.ear
