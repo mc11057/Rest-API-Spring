@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "a3525a83-cf90-4c16-aeac-b74d0b6a9181",
+		"name": "RestItemApi",
+		"description": "This collection of request is to do  request to the item api in order to the test the functionalRequirements",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getTokenHeaderByLoginForUserTypeAdmin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"adminUser\",\n\t\"password\":\"adminUser\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/login",
+				"description": "Authentication to get a token in the header response"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenHeaderByLoginForUserTypeUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"customerUser\",\r\n\t\"password\":\"customerUser\"\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/login"
+			},
+			"response": []
+		},
+		{
+			"name": "saveItem",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pblVzZXIiLCJleHAiOjE2MDQ1MTQ1NTd9.ld7bLYAa9j4vi1JmipE7sZdZvIk8wGqJaBQPCRuKpUlumAtUAlUhHpTGFotIe8HYjYLbVa2PjZlxX8Q-rxWMgw"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"itemId\":1,\r\n \"itemName\":\"atem_x\",\r\n \"itemEnteredByUser\":\"user_x\",\r\n \"itemEnteredDate\":\"2020-05-10T13:00:41.499\",\r\n \"itemBuyingPrice\":50.0,\r\n \"itemSellingPrice\":55.0,\r\n \"itemLastModifiedDate\":\"2020-05-10T13:00:41.498\",\r\n \"itemLastModifiedByUser\":\"user_y\",\r\n \"itemStatus\":\"AVAILABLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/app/item"
+			},
+			"response": []
+		},
+		{
+			"name": "getItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/app/item"
+			},
+			"response": []
+		},
+		{
+			"name": "getItemById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/app/item/1"
+			},
+			"response": []
+		},
+		{
+			"name": "getItemsByStatusAndUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/item?itemStatus=AVAILABLE&itemEnteredByUser=user_x",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"item"
+					],
+					"query": [
+						{
+							"key": "itemStatus",
+							"value": "AVAILABLE"
+						},
+						{
+							"key": "itemEnteredByUser",
+							"value": "user_x"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findItemsByPaginationAndSorted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/app/item?pageSize=5&page=0&sortBy=itemName",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"item"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "sortBy",
+							"value": "itemName"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateItem",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pblVzZXIiLCJleHAiOjE2MDQ0OTkzMDN9.pGnvQu2BsdCZqiiILeI_yVm-Y52gbV5yk6ErxomQ2JDpm8T8FJ-wfAhJNzS_J53GkiO7qouzChiBljthZsxchw"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n \"itemName\":\"atem_x\",\r\n \"itemEnteredByUser\":\"user_x\",\r\n \"itemEnteredDate\":\"2020-05-10T13:00:41.499\",\r\n \"itemBuyingPrice\":45.0,\r\n \"itemSellingPrice\":55.0,\r\n \"itemLastModifiedDate\":\"2020-05-10T13:00:41.498\",\r\n \"itemLastModifiedByUser\":\"user_y\",\r\n \"itemStatus\":\"AVAILABLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/app/item/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteItemById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pblVzZXIiLCJleHAiOjE2MDQ0OTkzMDN9.pGnvQu2BsdCZqiiILeI_yVm-Y52gbV5yk6ErxomQ2JDpm8T8FJ-wfAhJNzS_J53GkiO7qouzChiBljthZsxchw"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/app/item/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteItems",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pblVzZXIiLCJleHAiOjE2MDQ0OTkzMDN9.pGnvQu2BsdCZqiiILeI_yVm-Y52gbV5yk6ErxomQ2JDpm8T8FJ-wfAhJNzS_J53GkiO7qouzChiBljthZsxchw"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/app/item"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
