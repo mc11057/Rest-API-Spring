@@ -16,7 +16,7 @@ import static java.util.Collections.emptyList;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	
+
 	private IApplicationUserRepository applicationUserRepository;
 
 	public UserDetailsServiceImpl(IApplicationUserRepository applicationUserRepository) {
@@ -31,9 +31,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 		return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
 	}
-	
+
 	public com.applaudo.restapi.model.User findByUserName(String username) {
 		return applicationUserRepository.findByUsername(username);
 	}
-	
+
 }

@@ -105,9 +105,11 @@ public class ItemController {
 	}
 
 	@GetMapping()
-	public ResponseEntity<List<Item>> find(@RequestParam("status") String status,
-			@RequestParam("itemEnteredByUser") String user, @RequestParam("pageSize") String pageSize,
-			@RequestParam("page") String page, @RequestParam("sortBy") String sortBy) {
+	public ResponseEntity<List<Item>> find(@RequestParam(value = "itemStatus", defaultValue = "") String status,
+			@RequestParam(value = "itemEnteredByUser", defaultValue = "") String user,
+			@RequestParam(value = "pageSize", defaultValue = "") String pageSize,
+			@RequestParam(value = "page", defaultValue = "") String page,
+			@RequestParam(value = "sortBy", defaultValue = "") String sortBy) {
 		try {
 			List<Item> items = new ArrayList<Item>();
 

@@ -11,16 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "role")
 public class Role implements Serializable {
 
 	private static final long serialVersionUID = 8743481670047978982L;
-	
+
 	@Id
 	private long id;
-	
+
 	@Enumerated(EnumType.STRING)
 	private RoleEnum name;
 
@@ -50,7 +49,5 @@ public class Role implements Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-
 
 }

@@ -9,21 +9,23 @@ import com.applaudo.restapi.service.IUserApplicationService;
 
 @Service
 public class UserApplicationServiceImpl implements IUserApplicationService {
-	
+
 	private IApplicationUserRepository repository;
-	
+
 	@Autowired
 	public UserApplicationServiceImpl(IApplicationUserRepository repository) {
 		this.repository = repository;
-		
+
 	}
+
 	@Override
 	public User findByUsername(String username) {
 		return repository.findByUsername(username);
 	}
+
 	@Override
 	public User save(User user) {
-		return repository.save(user);		
+		return repository.save(user);
 	}
 
 }

@@ -7,50 +7,45 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "item")
-public class Item implements Serializable{
-	
-    /**
+public class Item implements Serializable {
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6290668663481962143L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq_gen")
-	@SequenceGenerator(name = "item_seq_gen", sequenceName = "item_id_seq", allocationSize = 1)
-    @Column(name = "itemId", unique = true, nullable = false)
+	@Column(name = "itemId", unique = true, nullable = false)
 	private int itemId;
-	
+
 	@Column(name = "itemName", nullable = false)
 	private String itemName;
-	
+
 	@Column(name = "itemEnteredByUser", nullable = false)
 	private String itemEnteredByUser;
-	
+
 	@Column(name = "itemEnteredDate", nullable = false)
 	private Timestamp itemEnteredDate;
-	
+
 	@Column(name = "itemBuyingPrice", precision = 10, scale = 1)
 	private Double itemBuyingPrice;
-	
+
 	@Column(name = "itemSellingPrice", precision = 10, scale = 2)
 	private Double itemSellingPrice;
-	
+
 	@Column(name = "itemLastModifiedDate")
 	private Timestamp itemLastModifiedDate;
-	
+
 	@Column(name = "itemLastModifiedByUser")
 	private String itemLastModifiedByUser;
 
 	@Enumerated(EnumType.STRING)
-	private ItemStatusEnum status;
+	private ItemStatusEnum itemStatus;
 
 	public int getItemId() {
 		return itemId;
@@ -116,16 +111,12 @@ public class Item implements Serializable{
 		this.itemLastModifiedByUser = itemLastModifiedByUser;
 	}
 
-	public ItemStatusEnum getStatus() {
-		return status;
+	public ItemStatusEnum getItemStatus() {
+		return itemStatus;
 	}
 
-	public void setStatus(ItemStatusEnum status) {
-		this.status = status;
+	public void setItemStatus(ItemStatusEnum itemStatus) {
+		this.itemStatus = itemStatus;
 	}
-
-
-	
-	
 
 }

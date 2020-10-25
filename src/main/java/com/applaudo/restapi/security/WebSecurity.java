@@ -33,10 +33,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests()
-				.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-				.antMatchers(HttpMethod.GET, APP_ITEM).permitAll()
-			    .antMatchers(H2_DB_CONSOLE).permitAll().and()
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+				.antMatchers(HttpMethod.GET, APP_ITEM).permitAll().antMatchers(H2_DB_CONSOLE).permitAll().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailsService)).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -47,7 +45,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
-
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
