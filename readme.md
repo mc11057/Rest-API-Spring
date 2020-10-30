@@ -33,7 +33,7 @@ Here is an example of an item data JSON:
 
 You can clone the project using git or you can directly download the project from GitHub and then unzip the file. If you want to clone the project using git, please open the terminal and type:
 
-`https://gitlab.com/applaudostudios/java-challenges/carlos-martinez-23-oct-2020.git`
+`git clone https://gitlab.com/applaudostudios/java-challenges/carlos-martinez-23-oct-2020.git`
 ## Running the app locally
 ## Configuring Spring Tool Suite
 - Open Spring Tool Suite and import the cloned project like existing maven project
@@ -83,7 +83,8 @@ For test this endpoint is necessary to send a token in the header of the request
 
 If the **itemId** exists in the database return **http status code 400** while if the **itemId** doesn´t exist it will return **http status code 201**
 
-- **PUT request to localhost:8080/app/item/{itemId **
+- **PUT request to localhost:8080/app/item/{itemId} **
+
 This endpoint is used for modify Items in the database, we need to include in the request of  the body  a body json with the fields that we wish to change like this:
 
     {
@@ -97,7 +98,7 @@ This item is securized; only user user with role **'Admin'** can save Items.
 
 For test this endpoint is necessary to send a token in the header of the request; You can get a token for user Admin by calling the endpoint  for get the token (First endpoint of this documentation).
 
-If the **id **of the path exists in the database return **https status code 200** while if the **id** doesn´t exist it will return **http status code 404**
+If the **itemId **of the path exists in the database return **https status code 200** while if the **Itemid** doesn´t exist it will return **http status code 404**
 
 - **DELETE request to localhost:8080/app/item/{itemId}:**
 
@@ -124,7 +125,7 @@ This endpoint return a **http status code 200**
 
 This endpoint is used for get the item with id **itemId** of the path
 
-If the **id **of the path exists in the database return **https status code 200** while if the **id** doesn´t exist it will return **http status code 404**
+If the **itemId **of the path exists in the database return **https status code 200** while if the **itemId** doesn´t exist it will return **http status code 404**
 
 **GET request to localhost:8080/app/item: **
 
@@ -143,16 +144,4 @@ This endpoint return a **http status code 200**
 This endpoint return  the requested page by paginating with **pageSize** and sorting by the **sortBy** field
 
 This endpoint return a **http status code 200**
-
-
-
-
-
-
-
-
-
-
-
-
 
