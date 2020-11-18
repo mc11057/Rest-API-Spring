@@ -8,4 +8,5 @@ public class SecurityConstants {
 	public static final String SIGN_UP_URL = "/users/sign-up";
 	public static final String H2_DB_CONSOLE = "/h2/**";
 	public static final String APP_ITEM = "/app/item/**";
+	public static final String SWAGGER_UI = "/swagger-ui/**";
 }

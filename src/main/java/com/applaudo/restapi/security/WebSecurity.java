@@ -1,8 +1,8 @@
 package com.applaudo.restapi.security;
 
 import static com.applaudo.restapi.security.SecurityConstants.APP_ITEM;
-import static com.applaudo.restapi.security.SecurityConstants.H2_DB_CONSOLE;
 import static com.applaudo.restapi.security.SecurityConstants.SIGN_UP_URL;
+import static com.applaudo.restapi.security.SecurityConstants.SWAGGER_UI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-				.antMatchers(HttpMethod.GET, APP_ITEM).permitAll().antMatchers(H2_DB_CONSOLE).permitAll().and()
+		http.cors().and().csrf().disable().authorizeRequests()
+				.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+				.antMatchers(SWAGGER_UI).permitAll()				
+				.antMatchers(HttpMethod.GET, APP_ITEM).permitAll().and()			
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailsService)).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

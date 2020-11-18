@@ -81,9 +81,8 @@ public class ItemServiceImpl implements IItemService {
 	@Override
 	public Item get(int id) throws Exception {
 		Optional<Item> itemDB = repository.findById(id);
-		if (itemDB.isPresent()) {
+		if (itemDB.isPresent())
 			return itemDB.get();
-		}
 		throw new RegisterExistException("The id of the Item no exist in the DataBase");
 	}
 
