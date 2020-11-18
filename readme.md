@@ -33,7 +33,7 @@ Here is an example of an item data JSON:
 
 You can clone the project using git or you can directly download the project from GitHub and then unzip the file. If you want to clone the project using git, please open the terminal and type:
 
-`git clone https://gitlab.com/applaudostudios/java-challenges/carlos-martinez-23-oct-2020.git`
+`git clone https://github.com/mc11057/Rest-API-Spring.git`
 ## Running the app locally
 ## Configuring Spring Tool Suite
 - Open Spring Tool Suite and import the cloned project like existing maven project
